@@ -109,6 +109,14 @@ textarea {
     font-weight: bold;
 }
 
+
+#price_befor{ 
+    color: gray;
+    font-size: x-large;
+    text-decoration: line-through;
+    margin: 0;
+}
+
 #footerdiv{
     background-color: #000;
     color: white;
