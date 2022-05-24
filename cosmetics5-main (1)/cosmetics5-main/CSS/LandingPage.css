@@ -1,0 +1,288 @@
+/* ///////////////HEADER STYLE/////////////// */
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    padding-right: 50px;
+    background-color: #dae0e065;
+}
+
+nav a{
+    color: #063e42;
+    text-decoration: none;
+    font-family: sans-serif;
+    margin: 20px;
+    font-size: 22px;
+}
+
+header {
+    background-image: url("../Images/Header.jpg");
+    background-repeat:no-repeat ;
+    background-size: cover;
+    height:80vh; 
+    width: 100%;
+    margin-bottom: 200px;
+}
+
+.head{
+    width: fit-content;
+    margin-left: 20%;
+    margin-top: 7%;
+    text-align: center;
+}
+
+
+
+/* ///////////////BODY STYLE/////////////// */
+#categories-h1{
+    text-align: center;
+    margin-bottom: 50px;
+}
+#categories{
+  
+    height: 50vh;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 200px;
+}
+#categories a {
+   color: #000;
+   height: 100%;
+   padding-top: 10%;
+   font-weight: bold;
+}
+#cat1:hover{
+    animation : pulse 2s ; 
+}
+#cat2:hover{
+    animation : pulse 2s ; 
+}
+#cat3:hover{
+    animation : pulse 2s ; 
+}
+#cat4:hover{
+    animation : pulse 2s ; 
+}
+#cat1{
+    background-image: url('../Images/Fragrance.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+   
+}
+
+#cat2{
+    background-image: url('../Images/L_p0094544501.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    color: white;
+}
+#cat3{
+    background-image: url('../Images/hair.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#cat4{
+    background-image: url('../Images/Skin_Care.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+h4{
+    height: 90px;
+}
+#discount-h1{
+    text-align: center;
+    margin-bottom: 50px;
+}
+#discount{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    /* margin-bottom: 200px; */
+    height: 80vh;
+}
+/* #discount div {
+    margin-bottom: 0;
+} */
+/* #discount div img {
+    width: 100%;
+    height: 60%;
+} */
+#discount div h4, #discount div p {
+    text-align: center;
+}
+#discount div p {
+    font-size: 20px;
+}
+.fa-star {
+    color: goldenrod;
+}
+
+#carouselExampleIndicators{
+    margin-bottom: 200px;
+}
+#seemore{
+    margin-bottom: 200px;
+    text-align: center;
+    font-size: 20px;
+    
+}
+#seemore a{
+    color: red;
+}
+
+/* ///////////////FOOTER STYLE/////////////// */
+#footerdiv{
+    background-color: #000;
+    color: white;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5% 0;
+}
+footer img {
+    width: 100%;
+}
+#footerdiv a{
+    /* display: block; */
+    color: white;
+    text-decoration: none;
+    font-size: larger;
+    font-weight: bold;
+    margin: 1% 0;
+}
+.fa-brands {
+    font-size: 50px;
+    margin: 0 2%;
+}
+
+/* ///////////////GENERAL STYLE/////////////// */
+.headerh1{
+    margin-bottom: 40px;
+}
+
+.headerp{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.button{
+    background-color: #0F848C;
+    border: none;
+    padding: 10px 25px;
+    color: white;
+    display: block;
+    width:fit-content;
+    font-size: 20px;
+    text-align: center;
+    margin: 20px auto;
+}
+.button:hover {
+    cursor: pointer;
+    background-color: #333;
+    text-decoration: none;
+    color: white;
+}
+
+#price_befor{ 
+    color: gray;
+    font-size: x-large;
+    text-decoration: line-through;
+    margin: 0;
+}
+#price_after{
+    color: red; 
+    font-size:30px;
+    font-weight: bold;
+}
+#dis{
+    background: #ef3737;
+    text-align: center;
+    width: 100%;
+    height: 10%;
+}
+
+#footerdiv{
+    background-color: #000;
+    color: white;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5% 0;
+}
+footer img {
+    width: 100%;
+}
+#footerdiv a{
+   
+    color: white;
+    text-decoration: none;
+    font-size: larger;
+    font-weight: bold;
+    margin: 1% 0;
+}
+.fa-brands {
+    font-size: 50px;
+    margin: 0 2%;
+    
+}
+
+
+.col-3 {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 25%;
+    flex: 0 0 25%;
+    max-width: 25%;
+}
+
+@keyframes pulse {
+    from {
+        transform : scale(1);
+        opacity   : 1;
+    }
+    50% {
+        transform : scale(0.75);
+        opacity   : 0.25;
+    }
+    to {
+        transform : scale(1);
+        opacity   : 1;
+    }
+}
+#img1{
+    background-image: url(../Images/Slider1.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#img2{
+    background-image: url(../Images/Slider2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#img3{
+    background-image: url(../Images/Slider3.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.num{
+    position: relative;
+}
+
+.sub{
+    position: absolute;
+    top: -6px;
+    right: 24px;
+    padding: 5px;
+    color: #063e42;
+    /* background-color: #063e42; */
+}
