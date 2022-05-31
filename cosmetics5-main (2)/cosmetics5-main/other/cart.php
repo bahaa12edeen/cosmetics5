@@ -91,7 +91,7 @@ $contact= '../contactUS.php?id='.$id;
             <img width="200px" src="./Images/logo.png">
         </div>
 
-        <div>
+        <div style="font-family: 'Times New Roman', Times, serif;">
             <a href="<?php echo $homepath; ?>">Home</a>
             <a href="<?php echo $shoppath; ?>">Shop</a>
 
@@ -132,7 +132,7 @@ $contact= '../contactUS.php?id='.$id;
                       <a href="signup.php">Register</a>';
             } else {
                 echo '<a href="../userpage.php?id=' . $id . '">Account</a>';
-                echo '<a href="LandingPage.php">Log Out</a>';
+                echo '<a href="../LandingPage.php">Log Out</a>';
             }
 
             if (isset($_GET["id"])) {
@@ -240,7 +240,7 @@ $contact= '../contactUS.php?id='.$id;
                 <p style="text-align: center;">copyright <i class="fa-solid fa-copyright"></i> 2022 BeautyCare</p>
             </div>
             <div class="col-3">
-                <h2>Our Website</h2>
+                <h1>Our Website</h1>
 
                 <p> You'll find that all of our products are made of organic ingredients
                     This means that our products are free of nanoparticles, parabens,

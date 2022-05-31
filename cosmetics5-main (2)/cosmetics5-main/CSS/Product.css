@@ -15,7 +15,7 @@ nav{
 nav a{
     color: #063e42;
     text-decoration: none;
-    font-family: sans-serif;
+    font-family: 'Times New Roman', Times, serif;
     margin: 20px;
     font-size: 20px;
 }
@@ -27,45 +27,93 @@ nav a{
     padding: 30px 60px;
 }
 
-table{
-    border-collapse: collapse;
-    /* margin: auto; */
-    font-family: sans-serif;
+#parent{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 5%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#parent div {
+    width: 40%;
+}
+
+#parent div img {
     width: 100%;
 }
 
-th, td{
-    padding: 10px;
-    border: 0.1px solid;
-    /* border-left: 0;
-    border-right: 0; */
+h4 {
+    color: #0F848C;
 }
 
-td{
+#price{
+    color: #555;
+}
+
+#addtocart{
+    background-color: #0F848C;
+    display: block;
     text-align: center;
-}
-
-.num{
-    width: 50px;
-}
-
-.change{
-    width: fit-content;
-    padding: 15px 35px;
-    background-color: #17868e;
-    border-radius: 5px;
     color: white;
-    font-family: sans-serif;
-    user-select: none;
-    cursor: pointer;
-    margin: auto;
+    border: none;
+    width: 50%;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    padding: 3%;
+    text-decoration: none;
 }
 
-.total{
-    padding: 25px;
-    margin-top: 30px;
-    width: fit-content; 
-    border: 1px solid;
+#addtocart:hover{
+    cursor: pointer;
+    background-color: #333;
+}
+
+hr {
+    background-color: #CCC;
+}
+
+#addrev {
+    border: #CCC 1px solid;
+    padding: 2%;
+    margin: 0 2%;
+}
+
+#addrev h3 {
+    color: #0F848C;
+}
+
+textarea {
+    width: 80%;
+    height: 20vh;
+}
+
+.fa-star {
+    color: #bbb;
+}
+
+#revs {
+    border: #CCC 1px solid;
+    padding: 0.5% 2%;
+    margin: 0 2%;
+}
+
+#revs i {
+    border: black 1px solid;
+    border-radius: 100%;
+    padding: 5px;
+}
+
+#revs span{
+    font-size: 25px;
+    font-weight: bold;
+}
+#price_befor{ 
+    color: gray;
+    font-size: x-large;
+    text-decoration: line-through;
+    margin: 0;
 }
 
 #footerdiv{

@@ -1,22 +1,32 @@
 <?php
 include_once 'connect.php';
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+}
+$cat_id = $_GET['cat_id'];
+$query = "SELECT * FROM products INNER JOIN categories WHERE products.category_id = categories.category_id AND products.category_id=$cat_id AND sale_status;";
+$result = mysqli_query($conn, $query);
+$resultcheck = mysqli_num_rows($result);
+
+$query1 = "SELECT category_name FROM categories WHERE category_id=$cat_id;";
+$result1 = mysqli_query($conn, $query1);
+$cat_name = mysqli_fetch_assoc($result1);
 
 if (isset($_GET["id"])) {
     $id = $_GET["id"];
     $loginpath = "&id=" . $id;
-    $cart = "other/cart.php?id=$id";
 } else {
     $loginpath = "";
-    $cart = "login.php";
 }
+
 if (isset($_GET["id"])) {
     if (isset($_GET["add"])) {
-        $pro_id = $_GET['pro_id']; //$
+        $pro_id = $_GET['pro_id'];
         $query2 = "SELECT * FROM cart WHERE product_id=$pro_id AND user_id=$id;";
         $result2 = mysqli_query($conn, $query2);
-        $resultcheck = mysqli_num_rows($result2);
+        $resultcheck2 = mysqli_num_rows($result2);
         $row3 = mysqli_fetch_assoc($result2);
-        if ($resultcheck > 0) {
+        if ($resultcheck2 > 0) {
             $increase = $row3['quantity'] + 1;
             $query4 = "UPDATE cart SET quantity= $increase WHERE product_id=$pro_id AND user_id=$id;";
             $result4 = mysqli_query($conn, $query4);
@@ -27,9 +37,7 @@ if (isset($_GET["id"])) {
     }
 }
 
-if (isset($_GET["id"])) {
-    $user_id = $_GET["id"];
-}
+
 if (!isset($_GET["id"])) {
     $shoppath = 'ProductsPage.php';
     $categorypath = 'CategoriesPage.php?';
@@ -39,12 +47,12 @@ if (!isset($_GET["id"])) {
     $contact = 'contactUS.php';
     $pop="";
 } else {
-    $shoppath = 'ProductsPage.php?id=' . $user_id;
-    $categorypath = 'CategoriesPage.php?id=' . $user_id . '&';
-    $cartpath = 'other/cart.php?id=' . $user_id;
-    $homepath = 'landingpage.php?id=' . $user_id;
-    $about = 'aboutUS.php?id=' . $user_id;
-    $contact = 'contactUS.php?id=' . $user_id;
+    $shoppath = 'ProductsPage.php?id=' . $id;
+    $categorypath = 'CategoriesPage.php?id=' . $id . '&';
+    $cartpath = 'other/cart.php?id=' . $id;
+    $homepath = 'landingpage.php?id=' . $id;
+    $about = 'aboutUS.php?id=' . $id;
+    $contact = 'contactUS.php?id=' . $id;
 
     /* *pop*  *pop*  *pop*  *pop*  *pop*  *pop*  *pop*  *pop*  *pop*  *pop*  *pop* */
 $querypop="SELECT * FROM cart INNER JOIN products WHERE cart.product_id=products.id  AND user_id=$id;";
@@ -70,7 +78,6 @@ $pop='';
 /* *pop*  *pop*  *pop*  *pop*  *pop*  *pop*  *pop*  *pop*  *pop*  *pop*  *pop* */
 
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -82,7 +89,7 @@ $pop='';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./CSS/ProductsPage.css">
     <script src="https://kit.fontawesome.com/aca8d5a1fa.js" crossorigin="anonymous"></script>
-    <title>Products</title>
+    <title>Categories</title>
 </head>
 
 <body>
@@ -108,7 +115,7 @@ $pop='';
                 echo '<a href="login.php">Login</a>
                       <a href="signup.php">Register</a>';
               }else{
-                echo '<a href="userpage.php?id='.$user_id.'">Account</a>';
+                echo '<a href="userpage.php?id='.$id.'">Account</a>';
                 echo '<a href="LandingPage.php">Log Out</a>';
               }
 
@@ -121,63 +128,56 @@ $pop='';
                 ?>
             </div>
         </nav>
-
     <div class="board">
-        <h1 class="bhead">Products</h1>
+
+        <h1 class="bhead">Category: <?php echo $cat_name['category_name'] ?></h1>
         <br>
         <div id="parent">
+            <?php
+            if ($resultcheck > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                    if (isset($_GET['id'])) { //here
+                        $path = 'CategoriesPage.php?cat_id=' . $cat_id . '&pro_id=' . $row["id"] . '&id=' . $id . '&add=1';
+                    } else {
+                        $path = "login.php";
+                    }
+                    $pbs = floor(($row['price']) / ((100 - $row['sale_pre']) / 100)); //// price before sale
 
-            <?php    //////////////////// Roa make sale section danimec ++ add 2 colum to data base
-            $query = "SELECT * FROM products INNER JOIN categories WHERE products.category_id = categories.category_id AND sale_status=1;";
-            $result = mysqli_query($conn, $query);
-            $resultcheck = mysqli_num_rows($result);
-            if ($resultcheck > 0) {
-                while ($row = mysqli_fetch_assoc($result)) {
-                    if (isset($_GET["id"])) {
-                        $id = $_GET["id"];
-                        $cartpath = 'ProductsPage.php?pro_id=' . $row['id'] . '&id=' . $id . '&add=1';
-                    } else {
-                        $cartpath = "login.php";
-                    }
-                    $pbs = floor(($row['price']) / ((100 - $row['sale_pre']) / 100)); //// price before sale 
                     echo '<div>
-                         <a href="Product.php?pro_id=' . $row["id"] . $loginpath . '"><img src="' . $row["image"] . '" alt="Product"></a>
-                         <h5>' . $row["category_name"] . '</h5>
-                         <a href="Product.php?pro_id=' . $row["id"] . $loginpath . '"><h3>' . $row["name"] . '</h3></a>
-                         <div class="rearrange">
-                         <span id="price_after">' . $row["price"] . ' JD</span>
-                         <span id="price_befor">' . $pbs . ' JD</span>
-                         </div>
-                         <a href=' . $cartpath . ' id="addtocart" style="background: #ef3737;">Add to Cart</a>
-                        </div>';
+                    <a href="Product.php?pro_id=' . $row["id"] . $loginpath . '"><img src="' . $row['image'] . '" alt="Product"></a>
+                    <a href="Product.php?pro_id=' . $row["id"] . $loginpath . '"><h3>' . $row['name'] . '</h3></a>
+                    <div class="rearrange">
+                    <span id = "price_befor">' . $pbs . ' JD</span>
+                    <span id="price_after">' . $row['price'] . ' JD</span>
+                    </div>
+                    <a href="' . $path . '" id="addtocart">Add to Cart</a>
+                    </div>';
                 }
-            }
-            $query = "SELECT * FROM products INNER JOIN categories WHERE products.category_id = categories.category_id AND sale_status=0;";
-            $result = mysqli_query($conn, $query);
-            $resultcheck = mysqli_num_rows($result);
-            if ($resultcheck > 0) {
+                $query = "SELECT * FROM products INNER JOIN categories WHERE products.category_id = categories.category_id AND products.category_id=$cat_id AND sale_status=0";;
+                $result = mysqli_query($conn, $query);
+                $resultcheck = mysqli_num_rows($result);
+                ////////////////////////////////////////////////////////////////
                 while ($row = mysqli_fetch_assoc($result)) {
-                    if (isset($_GET["id"])) {
-                        $id = $_GET["id"];
-                        $cartpath = 'ProductsPage.php?pro_id=' . $row['id'] . '&id=' . $id . '&add=1';
+                    if (isset($_GET['id'])) { //here
+                        $path = 'CategoriesPage.php?cat_id=' . $cat_id . '&pro_id=' . $row["id"] . '&id=' . $id . '&add=1';
                     } else {
-                        $cartpath = "login.php";
+                        $path = "login.php";
                     }
+
                     echo '<div>
-                        <a href="Product.php?pro_id=' . $row["id"] . $loginpath . '"><img src="' . $row["image"] . '" alt="Product"></a>
-                        <h5>' . $row["category_name"] . '</h5>
-                        <a ihref="Product.php?pro_id=' . $row["id"] . $loginpath . '"><h3>' . $row["name"] . '</h3></a>
-                        <h2 style="margin-top:30px;" class="rearrange">' . $row["price"] . ' JD</h2>
-                        <a href=' . $cartpath . ' id="addtocart">Add to Cart</a>
-                        </div>';
+                    <a href="Product.php?pro_id=' . $row["id"] . $loginpath . '"><img src="' . $row['image'] . '" alt="Product"></a>
+                    <a href="Product.php?pro_id=' . $row["id"] . $loginpath . '"><h3>' . $row['name'] . '</h3></a>
+                    <h2 style="margin-top:30px;"  class="rearrange">' . $row['price'] . ' JD</h2>
+                    <a href="' . $path . '" id="addtocart">Add to Cart</a>
+                    </div>';
                 }
             }
             ?>
-
         </div>
+
     </div>
-</body>
-<footer>
+
+    <footer>
     <div id="footerdiv">
         <div class="col-3">
             <img src="./Images/logo.png">
@@ -193,7 +193,7 @@ $pop='';
             <p style="text-align: center;">copyright <i class="fa-solid fa-copyright"></i> 2022 BeautyCare</p>
         </div>
         <div class="col-3">
-        <h2>Our Website</h2>
+        <h1>Our Website</h1>
        
 <p> You'll find that all of our products are made of organic ingredients 
     This means that our products are free of nanoparticles, parabens,
@@ -203,8 +203,6 @@ $pop='';
     </div>
             </div>
     </footer>
+</body>
 
-    <?php 
-print_r($row);
-?>
 </html>

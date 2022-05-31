@@ -3,6 +3,10 @@ body{
     background-color: #eaeaea;
 }
 
+/* *{
+    font-family: 'Times New Roman', Times, serif';
+} */
+
 nav{
     display: flex;
     align-items: center;
@@ -15,9 +19,9 @@ nav{
 nav a{
     color: #063e42;
     text-decoration: none;
-    font-family: sans-serif;
+    font-family: 'Times New Roman', Times, serif;
     margin: 20px;
-    font-size: 20px;
+    font-size: 22px;
 }
 
 .board{
@@ -30,39 +34,40 @@ nav a{
 #parent{
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
-    gap: 5%;
-    justify-content: space-between;
-    align-items: center;
+    flex-wrap: wrap;
+    gap: 3%;
+    justify-content: center;
 }
 
-#parent div {
-    width: 40%;
+#parent div{
+    width: 30%;
+    margin-bottom: 50px;
 }
 
-#parent div img {
-    width: 100%;
+#parent img {
+    width: 100%; 
+    height: 40vh;
 }
 
-h4 {
-    color: #0F848C;
+.fa-star {
+    color: goldenrod;
 }
 
-#price{
-    color: #555;
+a{
+    color: black;
+    text-decoration: none;
 }
 
 #addtocart{
     background-color: #0F848C;
-    display: block;
-    text-align: center;
     color: white;
     border: none;
-    width: 50%;
-    font-family: sans-serif;
+    width: 100%;
+    /* font-family: sans-serif; */
     font-size: 20px;
     padding: 3%;
-    text-decoration: none;
+    display: block;
+    text-align: center;
 }
 
 #addtocart:hover{
@@ -70,50 +75,17 @@ h4 {
     background-color: #333;
 }
 
-hr {
-    background-color: #CCC;
-}
-
-#addrev {
-    border: #CCC 1px solid;
-    padding: 2%;
-    margin: 0 2%;
-}
-
-#addrev h3 {
-    color: #0F848C;
-}
-
-textarea {
-    width: 80%;
-    height: 20vh;
-}
-
-.fa-star {
-    color: #bbb;
-}
-
-#revs {
-    border: #CCC 1px solid;
-    padding: 0.5% 2%;
-    margin: 0 2%;
-}
-
-#revs i {
-    border: black 1px solid;
-    border-radius: 100%;
-    padding: 5px;
-}
-
-#revs span{
-    font-size: 25px;
-    font-weight: bold;
-}
 #price_befor{ 
     color: gray;
     font-size: x-large;
     text-decoration: line-through;
     margin: 0;
+}
+#price_after{
+    color: red; 
+    font-size:30px;
+    font-weight: bold;
+    margin: 6px;
 }
 
 #footerdiv{
@@ -149,6 +121,20 @@ footer img {
     -ms-flex: 0 0 25%;
     flex: 0 0 25%;
     max-width: 25%;
+}
+
+.rearrange{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* flex-direction: column; */
+    width: 100% !important;
+    margin-bottom: 10px !important; 
+    font-size: 30px;
+}
+
+h3{
+    height: 50px;
 }
 
 .num{
